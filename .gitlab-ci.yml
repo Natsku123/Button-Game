@@ -10,7 +10,7 @@ stages:
 setup:
   stage: setup
   script:
-    - cp * /var/www/dl.meckl.in/button-game
+    - cp * /var/www/dl.meckl.in/button-game -r
     - cd /var/www/dl.meckl.in/button-game
     - npm install
 build:
