@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpResponse, HttpErrorResponse, HttpParams, HttpRequest, HttpEventType} from '@angular/common/http';
-import {Observable, Subject, throwError} from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
 import {ConfigService} from "./config.service";
 import {catchError} from "rxjs/internal/operators";
 
@@ -45,6 +45,14 @@ export class GameService {
 
   getPlayers(): Observable<Player[]> {
     return this.http.get<Player[]>(this.playersUrl)
+      .pipe(
+        catchError(this.error_handler)
+      )
+  }
+
+  getPlayer(username: string): Observable<Player> {
+    const options = {params: new HttpParams().set("username", username)};
+    return this.http.get<Player>(this.playersUrl, options)
       .pipe(
         catchError(this.error_handler)
       )

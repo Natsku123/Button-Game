@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GameService} from "../services/game.service";
+import {GameService, Player} from "../services/game.service";
 import {MatDialog} from "@angular/material";
 import {GoalPopupComponent} from "../goal-popup/goal-popup.component";
 import {CookieService} from "ngx-cookie-service";
@@ -19,11 +19,19 @@ export class FrontPageComponent implements OnInit {
   ) { }
 
   username: string;
+  player: Player;
+  interval: any;
 
   ngOnInit() {
     if (this.cookieService.check('username')) {
       this.username = this.cookieService.get('username')
     }
+
+    this.interval = setInterval(() => {
+      if (this.username && this.username != "") {
+        this.gameService.getPlayer(this.username).subscribe(player => this.player = player);
+      }
+    }, 1500)
   }
 
   openDialog(goal: string): void {

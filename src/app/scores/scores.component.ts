@@ -41,6 +41,7 @@ export class ScoresComponent implements OnInit {
         this.players = new MatTableDataSource<Player>(players);
         this.players.sort = this.sort;
         this.players.paginator = this.paginator;
+        this.players.sort.sort({ disableClear: false, id: "gold", start: "desc"})
       } else {
         this.players.data = players;
       }
