@@ -1,0 +1,10 @@
+div.background {
+  background-color: rgba(187, 222, 251, 0.7);
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
+}
+
+div.little-padding {
+  padding: 1.5vh 1vw 0 1vw;
+}

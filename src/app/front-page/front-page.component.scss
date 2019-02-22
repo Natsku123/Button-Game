@@ -1,0 +1,33 @@
+button.mat-fab.clicker {
+  max-height: 100%;
+  max-width: 100%;
+  width: 40vw;
+  height: 40vw;
+  font-size: 7vw;
+  @media screen and (max-width: 992px) {
+    width: 75vw;
+    height: 75vw;
+    font-size: 10vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  div.mobile {
+    margin-top: 10vh;
+  }
+}
+
+div.background {
+  background-color: rgba(187, 222, 251, 0.7);
+}
+
+div.extra-padding {
+  padding: 1vh 29vw 1vh 29vw;
+  @media screen and (max-width: 992px) {
+    padding: 1vh 23vw 1vh 23vw;
+  }
+}
+
+div.little-padding {
+  padding: 1.5vh 1vw 1vh 1vw;
+}

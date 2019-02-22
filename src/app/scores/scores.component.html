@@ -1,0 +1,33 @@
+<h1 align="center" class="pt-3 mb-3">Scores</h1>
+<div class="background rounded little-padding w-100">
+  <div class="text-center">
+    <button mat-raised-button routerLinkActive="active" routerLink="/">Continue clicking</button>
+  </div>
+  <mat-form-field>
+    <input matInput (keyup)="applySearch($event.target.value)" placeholder="Search">
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8">
+  <mat-table [dataSource]="players" matSort matSortActive="username, bronze, silver, gold">
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.username}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="bronze">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Bronzes </mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.bronze}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="silver">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Silvers </mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.silver}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="gold">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Golds </mat-header-cell>
+      <mat-cell *matCellDef="let player">{{player.gold}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+</div>

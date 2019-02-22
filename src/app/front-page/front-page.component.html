@@ -1,0 +1,19 @@
+<div class="w-100 pt-4 mobile">
+  <div align="center">
+    <div class="">
+      <button mat-fab class="clicker" color="primary" (click)="click()">CLICK ME!</button>
+    </div>
+  </div>
+  <div class="text-center mt-3 extra-padding">
+    <div class="background little-padding rounded">
+      <mat-form-field>
+        <mat-label>Username: {{username}}</mat-label>
+        <input #userInput matInput (change)="changeUsername(userInput.value)">
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button color="primary" routerLinkActive="active" routerLink="/scores/">Scores</button>
+      </div>
+    </div>
+  </div>
+</div>

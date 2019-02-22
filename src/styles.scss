@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$button-game-primary: mat-palette($mat-blue);
+$button-game-accent: mat-palette($mat-light-blue);
+$button-game-warn: mat-palette($mat-red);
+
+$button-game-theme: mat-light-theme($button-game-primary, $button-game-accent, $button-game-warn);
+
+@include angular-material-theme($button-game-theme);
+
+@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";

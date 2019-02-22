@@ -1,0 +1,22 @@
+before_script:
+  - echo Starting...
+  - whoami
+  - groups
+after_script:
+  - echo Done.
+stages:
+  - build
+  - setup
+setup:
+  stage: setup
+  script:
+    - cp * /var/www/dl.meckl.in/button-game
+    - cd /var/www/dl.meckl.in/button-game
+    - npm install
+build:
+  stage: build
+  script:
+    - cd /var/www/dl.meckl.in/button-game
+    - ng build -prod --output-path=/var/www/button-game.meckl.in/dist
+    - chmod 775 /var/www/button-game.meckl.in/dist -R 2>&1 | grep -v 'Permission Denied'
+    - chown www-data:www-data /var/www/button-game.meckl.in/dist -R 2>&1 | grep -v 'Permission Denied'

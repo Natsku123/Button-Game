@@ -1,0 +1,6 @@
+div.width {
+  width: 75%;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+}
