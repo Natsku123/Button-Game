@@ -5,8 +5,8 @@ before_script:
 after_script:
   - echo Done.
 stages:
-  - build
   - setup
+  - build
 setup:
   stage: setup
   script:
