@@ -1,9 +1,9 @@
-<h1 mat-dialog-title style="font-size: 50px;" align="center">Congratulations!</h1>
+<h1 mat-dialog-title class="goal-title" align="center">Congratulations!</h1>
 <div mat-dialog-content align="center">
   <p class="hit-text">You hit {{goal}}!</p>
-  <p>IMAGE HERE</p>
+  <img src="../../assets/{{goal}}.svg" class="goal-image mx-auto" />
   <p *ngIf="next">Next goal is <b class="primary-text">{{next.next}}</b> which needs <b class="primary-text">{{next.amount}}</b> more clicks!</p>
 </div>
 <div mat-dialog-actions align="center">
-  <button mat-button (click)="closeDialog()">Close</button>
+  <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
 </div>

@@ -11,16 +11,31 @@
         <input #userInput matInput (change)="changeUsername(userInput.value)">
       </mat-form-field>
 
-      <div *ngIf="player && player.bronze && player.silver && player.gold" class="mb-2">
+      <div *ngIf="player" class="mb-2">
         <div class="row">
-          <div class="col">Bronzes</div>
-          <div class="col">Silvers</div>
-          <div class="col">Golds</div>
+          <div class="col"><img src="../../assets/bronze.svg" /></div>
+          <div class="col"><img src="../../assets/silver.svg" /></div>
+          <div class="col"><img src="../../assets/gold.svg" /></div>
         </div>
         <div class="row">
-          <div class="col">{{player.bronze}}</div>
-          <div class="col">{{player.silver}}</div>
-          <div class="col">{{player.gold}}</div>
+          <div class="col">
+            <p *ngIf="player.bronze; else noBronze"> {{player.bronze}}</p>
+            <ng-template #noBronze>
+              <p>0</p>
+            </ng-template>
+          </div>
+          <div class="col">
+            <p *ngIf="player.silver; else noSilver">{{player.silver}}</p>
+            <ng-template #noSilver>
+              <p>0</p>
+            </ng-template>
+          </div>
+          <div class="col">
+            <p *ngIf="player.gold; noGold">{{player.gold}}</p>
+            <ng-template #noGold>
+              <p>0</p>
+            </ng-template>
+          </div>
         </div>
       </div>
 

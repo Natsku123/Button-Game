@@ -6,4 +6,22 @@
 
 p.hit-text {
   font-size: 30px;
+  @media screen and (max-width: 992px) {
+    font-size: 20px;
+  }
+}
+
+h1.goal-title {
+  font-size: 50px;
+  @media screen and (max-width: 992px) {
+    font-size: 30px;
+  }
+}
+
+img.goal-image {
+  max-width: 40%;
+  height: auto;
+  @media screen and (max-width: 992px) {
+    max-width: 50%;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {GameService, Player} from "../services/game.service";
 import {MatDialog} from "@angular/material";
 import {GoalPopupComponent} from "../goal-popup/goal-popup.component";
@@ -21,8 +21,15 @@ export class FrontPageComponent implements OnInit {
   username: string;
   player: Player;
   interval: any;
+  screenWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth = window.innerWidth;
+  }
 
   ngOnInit() {
+    this.screenWidth = window.innerWidth;
     if (this.cookieService.check('username')) {
       this.username = this.cookieService.get('username')
     }
@@ -35,9 +42,18 @@ export class FrontPageComponent implements OnInit {
   }
 
   openDialog(goal: string): void {
+    let width: string;
+    let height: string;
+    if (this.screenWidth > 600) {
+      width = "50vw";
+      height = "70vh";
+    } else {
+      width = "98vw";
+      height = "45vh";
+    }
     const dialogRef = this.popup.open(GoalPopupComponent, {
-      width: '50vw',
-      height: '70vh',
+      width: width,
+      height: height,
       data: goal
     });
 
