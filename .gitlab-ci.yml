@@ -10,11 +10,11 @@ stages:
 setup:
   stage: setup
   script:
-    - cp * /var/www/dl.meckl.in/button-game -r
-    - cd /var/www/dl.meckl.in/button-game
+    - cp * [temp build directory] -r
+    - cd [temp build directory]
     - npm install
 build:
   stage: build
   script:
-    - cd /var/www/dl.meckl.in/button-game
-    - ng build --prod --output-path=/var/www/button-game.meckl.in/dist
+    - cd [temp build directory]
+    - ng build --prod --output-path=[output directory]
