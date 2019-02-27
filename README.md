@@ -32,7 +32,7 @@ NOTE: Most of these commands need `root` access or `sudo`.
 
 Download:
 ```bash
-git clone http://git.meckl.in/mmecklin/button-game.git
+git clone https://github.com/Natsku123/Button-Game.git
 ```
 
 ### Build
