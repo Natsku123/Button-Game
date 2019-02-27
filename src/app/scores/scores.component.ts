@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {GameService, Player} from "../services/game.service";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { GameService, Player } from "../services/game.service";
+import { MatPaginator, MatSort, MatTableDataSource } from "@angular/material";
 
 @Component({
   selector: 'app-scores',
@@ -21,12 +21,15 @@ export class ScoresComponent implements OnInit {
   interval: any;
 
   ngOnInit() {
+
+    // Update players every 20 seconds
     this.loadPlayers(true);
     this.interval = setInterval(()=>{
       this.loadPlayers(false)
     }, 20000)
   }
 
+  // If player is search with value, apply filter to players
   applySearch(value: string) {
     this.players.filter = value.trim().toLowerCase();
 
@@ -36,13 +39,23 @@ export class ScoresComponent implements OnInit {
   }
 
   loadPlayers(first: boolean) {
+
+    // Get player from backend
     this.gameService.getPlayers().subscribe((players) => {
+
+      // If this is the first time
       if (first) {
+
+        // Create new MatTableDataSource with sort and paginator
         this.players = new MatTableDataSource<Player>(players);
         this.players.sort = this.sort;
         this.players.paginator = this.paginator;
+
+        // Set sorting to sort by gold
         this.players.sort.sort({ disableClear: false, id: "gold", start: "desc"})
       } else {
+
+        // Update players
         this.players.data = players;
       }
     });

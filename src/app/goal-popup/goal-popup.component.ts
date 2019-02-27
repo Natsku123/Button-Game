@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {GameService, Next} from "../services/game.service";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import { Component, Inject, OnInit } from '@angular/core';
+import { GameService, Next } from "../services/game.service";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
 
 @Component({
   selector: 'app-goal-popup',
@@ -20,16 +20,20 @@ export class GoalPopupComponent implements OnInit {
   interval: any;
 
   ngOnInit() {
+
+    // Update next goal from backend every 1.5 seconds
     this.loadNextGoal();
     this.interval = setInterval(()=>{
       this.loadNextGoal()
     }, 1500)
   }
 
+  // Close dialog
   closeDialog() {
     this.dialogRef.close();
   }
 
+  // Get next goal from backend
   loadNextGoal() {
     this.gameService.to_go().subscribe(next => this.next = next);
   }

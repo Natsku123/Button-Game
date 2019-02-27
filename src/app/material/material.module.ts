@@ -6,7 +6,9 @@ import {
   MatTableModule, MatPaginatorModule, MatSortModule, MatSnackBarModule
 } from '@angular/material'
 import { CommonModule } from '@angular/common';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+// Import materials and export them to app.module.ts (cleaner way)
 
 @NgModule({
   declarations: [],
